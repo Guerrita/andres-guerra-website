@@ -4,14 +4,14 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { useI18n } from "@/app/lib/i18n-context";
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/guerrita", label: "GitHub" },
-  { icon: Linkedin, href: "https://https://www.linkedin.com/in/andres-guerra-montoya/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:andresguerra0625@gmail.com", label: "Email" },
-];
-
 const Footer = () => {
   const { t } = useI18n();
+
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/guerrita", labelKey: "github" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/andres-guerra-montoya/", labelKey: "linkedin" },
+    { icon: Mail, href: "mailto:andresguerra0625@gmail.com", labelKey: "email" },
+  ];
 
   const navLinks = [
     { label: t.nav.home, href: "/#inicio" },
@@ -41,11 +41,11 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={link.label}
+                aria-label={t.common[link.labelKey as keyof typeof t.common]}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <link.icon size={18} />

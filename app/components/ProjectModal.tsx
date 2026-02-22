@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink } from "lucide-react";
 import { useEffect } from "react";
+import { useI18n } from "@/app/lib/i18n-context";
 import type { Translations } from "@/app/lib/translations";
 
 interface ProjectModalProps {
@@ -12,6 +13,8 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
+  const { t } = useI18n();
+
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -71,7 +74,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                 <button
                   onClick={onClose}
                   className="p-2 hover:bg-accent/10 rounded-lg transition-colors"
-                  aria-label="Close modal"
+                  aria-label={t.projectModal.closeModal}
                 >
                   <X className="w-6 h-6 text-muted-foreground" />
                 </button>
@@ -118,7 +121,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                           ) : (
                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5">
                               <p className="text-muted-foreground text-sm">
-                                Preview not available
+                                {t.projectModal.previewNotAvailable}
                               </p>
                             </div>
                           )}
@@ -129,7 +132,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                       </div>
 
                       <p className="text-center mt-2 text-xs text-muted-foreground">
-                        Hover to scroll preview
+                        {t.projectModal.hoverToScroll}
                       </p>
                     </div>
                   </div>
@@ -149,7 +152,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                     {/* Tech Stack */}
                     <div>
                       <h3 className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">
-                        Technologies
+                        {t.projectModal.technologies}
                       </h3>
                       <div className="flex flex-wrap gap-1.5">
                         {project.tech.map((techName) => (
@@ -166,7 +169,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                     {/* Features Grid */}
                     <div>
                       <h3 className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">
-                        Key Features
+                        {t.projectModal.keyFeatures}
                       </h3>
                       <div className="grid grid-cols-2 gap-2.5">
                         {project.features.map((feature, index) => (
@@ -192,7 +195,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                     {/* Highlights */}
                     <div>
                       <h3 className="text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-2">
-                        Highlights
+                        {t.projectModal.highlights}
                       </h3>
                       <ul className="space-y-1.5">
                         {project.highlights.map((highlight, index) => (
@@ -218,7 +221,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                         className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-all shadow-lg shadow-primary/25 text-sm"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        Visit Website
+                        {t.projectModal.visitWebsite}
                       </motion.a>
                     )}
                   </div>

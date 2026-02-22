@@ -14,6 +14,12 @@ import {
   NextJsIcon,
   GitHubIcon,
   ArangoDBIcon,
+  LambdaIcon,
+  S3Icon,
+  StepFunctionsIcon,
+  ApiGatewayIcon,
+  AmplifyIcon,
+  ServerlessIcon,
 } from "@/app/lib/tech-icons";
 
 interface TechItem {
@@ -22,43 +28,51 @@ interface TechItem {
   icon?: React.ComponentType<{ size?: number }>;
 }
 
+interface TechCardBase {
+  icon: React.ElementType;
+  titleKey: string;
+  items: TechItem[];
+  className?: string;
+  highlight?: boolean;
+}
+
 interface TechCard {
   icon: React.ElementType;
+  titleKey: string;
   title: string;
   items: TechItem[];
   className?: string;
   highlight?: boolean;
 }
 
-const techCards: TechCard[] = [
+const techCardBase = [
   {
     icon: Code2,
-    title: "Backend",
+    titleKey: "categoryBackend" as const,
     items: [
       { name: "Python", color: "#3776AB", icon: PythonIcon },
       { name: "Node.js", color: "#339933", icon: NodeJsIcon },
-      { name: "AWS Lambda", color: "#FF9900", icon: AwsIcon },
-      { name: "Step Functions", color: "#FF4F8B", icon: AwsIcon },
-      { name: "API Gateway", color: "#FF9900", icon: AwsIcon },
-      { name: "SQS", color: "#FF9900", icon: AwsIcon },
-      { name: "Serverless", color: "#FD5750" },
+      { name: "AWS Lambda", color: "#FF9900", icon: LambdaIcon },
+      { name: "Step Functions", color: "#FF4F8B", icon: StepFunctionsIcon },
+      { name: "API Gateway", color: "#FF9900", icon: ApiGatewayIcon },
+      { name: "Serverless", color: "#FD5750", icon: ServerlessIcon },
     ],
     className: "md:col-span-2",
     highlight: true,
   },
   {
     icon: Cloud,
-    title: "Cloud",
+    titleKey: "categoryCloud" as const,
     items: [
       { name: "AWS", color: "#FF9900", icon: AwsIcon },
-      { name: "S3", color: "#569A31", icon: AwsIcon },
+      { name: "S3", color: "#569A31", icon: S3Icon },
       { name: "EC2", color: "#FF9900", icon: AwsIcon },
-      { name: "Amplify", color: "#FF9900", icon: AwsIcon },
+      { name: "Amplify", color: "#FF9900", icon: AmplifyIcon },
     ],
   },
   {
     icon: Database,
-    title: "Databases",
+    titleKey: "categoryDatabases" as const,
     items: [
       { name: "DynamoDB", color: "#4053D6", icon: DynamoDBIcon },
       { name: "ArangoDB", color: "#68A261", icon: ArangoDBIcon },
@@ -68,7 +82,7 @@ const techCards: TechCard[] = [
   },
   {
     icon: Layout,
-    title: "Frontend",
+    titleKey: "categoryFrontend" as const,
     items: [
       { name: "React", color: "#61DAFB", icon: ReactIcon },
       { name: "React Native", color: "#61DAFB", icon: ReactIcon },
@@ -80,20 +94,20 @@ const techCards: TechCard[] = [
   },
   {
     icon: GitBranch,
-    title: "DevOps",
+    titleKey: "categoryDevOps" as const,
     items: [
       { name: "GitHub Actions", color: "#2088FF", icon: GitHubIcon },
-      { name: "Serverless Deploy", color: "#FD5750" },
-      { name: "AWS Amplify", color: "#FF9900", icon: AwsIcon },
+      { name: "Serverless Deploy", color: "#FD5750", icon: ServerlessIcon },
+      { name: "AWS Amplify", color: "#FF9900", icon: AmplifyIcon },
       { name: "CI/CD", color: "#14b8a6" },
     ],
   },
   {
     icon: Languages,
-    title: "Languages",
+    titleKey: "categoryLanguages" as const,
     items: [
-      { name: "English (B2 - Upper Intermediate)", color: "#3178C6" },
-      { name: "Spanish (Native)", color: "#FF9900" },
+      { name: "englishLevel", color: "#3178C6" },
+      { name: "spanishLevel", color: "#FF9900" },
     ],
   },
 ];
@@ -115,6 +129,23 @@ const item = {
 
 const TechStackSection = () => {
   const { t } = useI18n();
+
+  // Build techCards with translated titles
+  const techCards = techCardBase.map((card) => {
+    return {
+      ...card,
+      title: t.techStack[card.titleKey as keyof typeof t.techStack],
+      items: card.items.map((item) => ({
+        ...item,
+        name:
+          item.name === "englishLevel"
+            ? t.techStack.englishLevel
+            : item.name === "spanishLevel"
+              ? t.techStack.spanishLevel
+              : item.name,
+      })),
+    };
+  });
 
   return (
     <section id="stack" className="section-container">
@@ -140,9 +171,9 @@ const TechStackSection = () => {
         viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto auto-rows-auto"
       >
-        {techCards.map((card) => (
+        {techCards.map((card: typeof techCards[0]) => (
           <motion.div
-            key={card.title}
+            key={card.titleKey}
             variants={item}
             className={`bento-card p-6 group ${card.className || ""} ${
               card.highlight
@@ -165,7 +196,7 @@ const TechStackSection = () => {
             </h3>
 
             <div className="flex flex-wrap gap-2">
-              {card.items.map((tech) => (
+              {card.items.map((tech: (typeof card.items)[0]) => (
                 <span
                   key={tech.name}
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-code bg-secondary/50 border border-border/50 text-muted-foreground hover:text-foreground transition-colors"

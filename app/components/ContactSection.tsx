@@ -13,7 +13,7 @@ const ContactSection = () => {
 
   const contactInfo = [
     { icon: Mail, label: "Email", value: "andresguerra0625@gmail.com", href: "mailto:andresguerra0625@gmail.com" },
-    { icon: Linkedin, label: "LinkedIn", value: "https://www.linkedin.com/in/andres-guerra-montoya/", href: "https://https://www.linkedin.com/in/andres-guerra-montoya/" },
+    { icon: Linkedin, label: "LinkedIn", value: "https://www.linkedin.com/in/andres-guerra-montoya/", href: "https://www.linkedin.com/in/andres-guerra-montoya/" },
     { icon: Github, label: "GitHub", value: "github.com/guerrita", href: "https://github.com/guerrita" },
     { icon: MapPin, label: t.contact.locationLabel, value: t.contact.locationValue, href: null as string | null },
   ];

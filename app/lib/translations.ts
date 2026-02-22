@@ -16,6 +16,7 @@ export interface Translations {
     viewProjects: string;
     contact: string;
     downloadCV: string;
+    availableForOpportunities: string;
   };
   experience: {
     title: string;
@@ -33,6 +34,14 @@ export interface Translations {
     title: string;
     titleHighlight: string;
     subtitle: string;
+    categoryBackend: string;
+    categoryCloud: string;
+    categoryDatabases: string;
+    categoryFrontend: string;
+    categoryDevOps: string;
+    categoryLanguages: string;
+    englishLevel: string;
+    spanishLevel: string;
   };
   projects: {
     title: string;
@@ -55,6 +64,37 @@ export interface Translations {
         description: string;
       }[];
     }[];
+  };
+  bento: {
+    about: string;
+    quickOverview: string;
+    currentlyAt: string;
+    location: string;
+    status: string;
+    timezone: string;
+    fullTimeRoles: string;
+    selectiveFreelance: string;
+    remoteHybrid: string;
+  };
+  projectModal: {
+    technologies: string;
+    keyFeatures: string;
+    highlights: string;
+    visitWebsite: string;
+    previewNotAvailable: string;
+    hoverToScroll: string;
+    closeModal: string;
+  };
+  common: {
+    toggleLanguage: string;
+    toggleTheme: string;
+    toggleMenu: string;
+    github: string;
+    linkedin: string;
+    email: string;
+    shareOn: string;
+    copyLink: string;
+    clickToViewDetails: string;
   };
   contact: {
     title: string;
@@ -135,6 +175,7 @@ export const translations: Record<Locale, Translations> = {
       viewProjects: "Ver Proyectos",
       contact: "Contacto",
       downloadCV: "Descargar CV",
+      availableForOpportunities: "Disponible para oportunidades",
     },
     experience: {
       title: "Experiencia",
@@ -204,6 +245,14 @@ export const translations: Record<Locale, Translations> = {
       titleHighlight: "Stack",
       subtitle:
         "Las tecnologías y herramientas con las que trabajo día a día.",
+      categoryBackend: "Backend",
+      categoryCloud: "Cloud",
+      categoryDatabases: "Bases de Datos",
+      categoryFrontend: "Frontend",
+      categoryDevOps: "DevOps",
+      categoryLanguages: "Lenguajes",
+      englishLevel: "Inglés (B2 - Intermedio Alto)",
+      spanishLevel: "Español (Nativo)",
     },
     projects: {
       title: "Proyectos",
@@ -473,16 +522,47 @@ export const translations: Record<Locale, Translations> = {
       title: "Mi",
       titleHighlight: "Blog",
       subtitle:
-        "Reflexiones y aprendizajes sobre desarrollo backend, arquitectura cloud y tecnologia.",
-      searchPlaceholder: "Buscar articulos...",
+        "Reflexiones y aprendizajes sobre desarrollo backend, arquitectura cloud y tecnología.",
+      searchPlaceholder: "Buscar artículos...",
       allCategories: "Todas",
       minRead: "min de lectura",
       publishedOn: "Publicado el",
       backToBlog: "Volver al Blog",
       sharePost: "Compartir",
-      noPosts: "No hay articulos publicados aun.",
-      noResults: "No se encontraron articulos con esos criterios.",
+      noPosts: "No hay artículos publicados aún.",
+      noResults: "No se encontraron artículos con esos criterios.",
       tags: "Etiquetas",
+    },
+    bento: {
+      about: "Acerca de",
+      quickOverview: "Resumen Rápido",
+      currentlyAt: "Trabajo actual",
+      location: "Ubicación",
+      status: "Estado",
+      timezone: "GMT-5 · Disponible para trabajo remoto",
+      fullTimeRoles: "Roles a tiempo completo",
+      selectiveFreelance: "Freelance selectivo",
+      remoteHybrid: "Remoto e híbrido",
+    },
+    projectModal: {
+      technologies: "Tecnologías",
+      keyFeatures: "Características Principales",
+      highlights: "Destacados",
+      visitWebsite: "Visitar Sitio Web",
+      previewNotAvailable: "Vista previa no disponible",
+      hoverToScroll: "Pasar el ratón para desplazarse",
+      closeModal: "Cerrar modal",
+    },
+    common: {
+      toggleLanguage: "Cambiar idioma",
+      toggleTheme: "Cambiar tema",
+      toggleMenu: "Cambiar menú",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      email: "Email",
+      shareOn: "Compartir en",
+      copyLink: "Copiar enlace",
+      clickToViewDetails: "Haz clic para ver detalles →",
     },
     footer: {
       builtWith: "Built with Next.js, Tailwind CSS & Framer Motion.",
@@ -509,6 +589,7 @@ export const translations: Record<Locale, Translations> = {
       viewProjects: "View Projects",
       contact: "Contact",
       downloadCV: "Download CV",
+      availableForOpportunities: "Available for opportunities",
     },
     experience: {
       title: "Work",
@@ -577,6 +658,14 @@ export const translations: Record<Locale, Translations> = {
       title: "Tech",
       titleHighlight: "Stack",
       subtitle: "The technologies and tools I work with every day.",
+      categoryBackend: "Backend",
+      categoryCloud: "Cloud",
+      categoryDatabases: "Databases",
+      categoryFrontend: "Frontend",
+      categoryDevOps: "DevOps",
+      categoryLanguages: "Languages",
+      englishLevel: "English (B2 - Upper Intermediate)",
+      spanishLevel: "Spanish (Native)",
     },
     projects: {
       title: "Featured",
@@ -856,6 +945,37 @@ export const translations: Record<Locale, Translations> = {
       noPosts: "No articles published yet.",
       noResults: "No articles found matching your criteria.",
       tags: "Tags",
+    },
+    bento: {
+      about: "About",
+      quickOverview: "Quick Overview",
+      currentlyAt: "Currently at",
+      location: "Location",
+      status: "Status",
+      timezone: "GMT-5 · Open to remote",
+      fullTimeRoles: "Full-time roles",
+      selectiveFreelance: "Selective freelance",
+      remoteHybrid: "Remote & hybrid",
+    },
+    projectModal: {
+      technologies: "Technologies",
+      keyFeatures: "Key Features",
+      highlights: "Highlights",
+      visitWebsite: "Visit Website",
+      previewNotAvailable: "Preview not available",
+      hoverToScroll: "Hover to scroll preview",
+      closeModal: "Close modal",
+    },
+    common: {
+      toggleLanguage: "Toggle language",
+      toggleTheme: "Toggle theme",
+      toggleMenu: "Toggle menu",
+      github: "GitHub",
+      linkedin: "LinkedIn",
+      email: "Email",
+      shareOn: "Share on",
+      copyLink: "Copy link",
+      clickToViewDetails: "Click to view details →",
     },
     footer: {
       builtWith: "Built with Next.js, Tailwind CSS & Framer Motion.",

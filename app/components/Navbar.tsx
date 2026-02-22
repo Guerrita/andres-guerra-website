@@ -25,8 +25,8 @@ const Navbar = () => {
     { label: t.nav.experience, href: "/#bento", id: "bento" },
     { label: t.nav.stack, href: "/#bento", id: "bento-stack" },
     { label: t.nav.projects, href: "/#proyectos", id: "proyectos" },
-    { label: t.nav.blog, href: "/blog", id: "blog" },
     { label: t.nav.contact, href: "/#contacto", id: "contacto" },
+    { label: t.nav.blog, href: "/blog", id: "blog" },
   ];
 
   const isItemActive = (item: { href: string; id: string }) => {
@@ -78,7 +78,7 @@ const Navbar = () => {
             <button
               onClick={toggleLocale}
               className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-code text-muted-foreground hover:text-foreground hover:bg-secondary/40 transition-colors"
-              aria-label="Toggle language"
+              aria-label={t.common.toggleLanguage}
             >
               <Globe size={14} />
               <span>{locale.toUpperCase()}</span>
@@ -88,7 +88,7 @@ const Navbar = () => {
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/40 transition-colors"
-              aria-label="Toggle theme"
+              aria-label={t.common.toggleTheme}
             >
               {mounted && (theme === "dark" ? <Sun size={14} /> : <Moon size={14} />)}
             </button>
@@ -97,7 +97,7 @@ const Navbar = () => {
             <button
               className="md:hidden p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/40 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={t.common.toggleMenu}
             >
               {isOpen ? <X size={16} /> : <Menu size={16} />}
             </button>

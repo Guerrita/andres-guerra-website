@@ -178,7 +178,7 @@ const ProjectsSection = () => {
                   {/* Click to view details hint */}
                   <div className="mt-4 pt-4 border-t border-border/30">
                     <p className="text-xs text-muted-foreground text-center group-hover:text-primary transition-colors">
-                      Click to view details →
+                      {t.common.clickToViewDetails}
                     </p>
                   </div>
                 </div>

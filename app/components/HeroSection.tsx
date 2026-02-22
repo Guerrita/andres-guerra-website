@@ -68,7 +68,7 @@ const HeroSection = () => {
             >
               <span className="inline-flex items-center gap-2 text-xs font-code text-muted-foreground border border-border rounded-full px-4 py-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Available for opportunities
+                {t.hero.availableForOpportunities}
               </span>
             </motion.div>
 
@@ -154,7 +154,7 @@ const HeroSection = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://https://www.linkedin.com/in/andres-guerra-montoya/"
+                href="https://www.linkedin.com/in/andres-guerra-montoya/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"

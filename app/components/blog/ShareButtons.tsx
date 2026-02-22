@@ -21,7 +21,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   const shareLinks = [
     {
       icon: Linkedin,
-      label: "LinkedIn",
+      labelKey: "linkedin",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
     },
   ];
@@ -46,7 +46,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Twitter/X"
+        aria-label={`${t.common.shareOn} Twitter/X`}
         className="p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
       >
         <svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor">
@@ -56,11 +56,11 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
 
       {shareLinks.map((link) => (
         <a
-          key={link.label}
+          key={link.href}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Share on ${link.label}`}
+          aria-label={`${t.common.shareOn} ${t.common[link.labelKey as keyof typeof t.common]}`}
           className="p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
         >
           <link.icon size={18} />
@@ -70,7 +70,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
       <button
         onClick={copyLink}
         className="p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-200"
-        aria-label="Copy link"
+        aria-label={t.common.copyLink}
       >
         {copied ? (
           <Check size={18} className="text-emerald-400" />
