@@ -75,6 +75,8 @@ const techCards: TechCard[] = [
       { name: "Next.js", color: "#a3a3a3", icon: NextJsIcon },
       { name: "TypeScript", color: "#3178C6", icon: TypeScriptIcon },
     ],
+    className: "md:col-span-2",
+    highlight: true,
   },
   {
     icon: GitBranch,
@@ -93,7 +95,6 @@ const techCards: TechCard[] = [
       { name: "English (B2 - Upper Intermediate)", color: "#3178C6" },
       { name: "Spanish (Native)", color: "#FF9900" },
     ],
-    className: "md:col-span-2",
   },
 ];
 

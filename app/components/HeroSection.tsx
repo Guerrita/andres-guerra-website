@@ -145,7 +145,7 @@ const HeroSection = () => {
               className="flex items-center gap-5"
             >
               <a
-                href="https://github.com/andresguerra"
+                href="https://github.com/guerrita"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -154,7 +154,7 @@ const HeroSection = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/andresguerra"
+                href="https://https://www.linkedin.com/in/andres-guerra-montoya/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"

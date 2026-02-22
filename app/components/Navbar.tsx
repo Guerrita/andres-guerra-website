@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useActiveSection } from "@/app/hooks/use-active-section";
 import { useI18n } from "@/app/lib/i18n-context";
 import { cn } from "@/app/lib/utils";
@@ -15,15 +17,23 @@ const Navbar = () => {
 
   useEffect(() => setMounted(true), []);
   const activeSection = useActiveSection();
+  const pathname = usePathname();
   const { locale, t, toggleLocale } = useI18n();
 
   const navItems = [
-    { label: t.nav.home, href: "#inicio", id: "inicio" },
-    { label: t.nav.experience, href: "#bento", id: "bento" },
-    { label: t.nav.stack, href: "#bento", id: "bento-stack" },
-    { label: t.nav.projects, href: "#proyectos", id: "proyectos" },
-    { label: t.nav.contact, href: "#contacto", id: "contacto" },
+    { label: t.nav.home, href: "/#inicio", id: "inicio" },
+    { label: t.nav.experience, href: "/#bento", id: "bento" },
+    { label: t.nav.stack, href: "/#bento", id: "bento-stack" },
+    { label: t.nav.projects, href: "/#proyectos", id: "proyectos" },
+    { label: t.nav.blog, href: "/blog", id: "blog" },
+    { label: t.nav.contact, href: "/#contacto", id: "contacto" },
   ];
+
+  const isItemActive = (item: { href: string; id: string }) => {
+    if (item.href === "/blog") return pathname.startsWith("/blog");
+    if (pathname !== "/") return false;
+    return activeSection === item.id;
+  };
 
   return (
     <>
@@ -31,12 +41,12 @@ const Navbar = () => {
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-max">
         <div className="flex items-center gap-1 bg-background/80 backdrop-blur-xl border border-primary/10 rounded-full px-3 py-2 shadow-lg shadow-black/10">
           {/* Logo */}
-          <a
-            href="#inicio"
+          <Link
+            href="/"
             className="text-sm font-heading font-bold text-foreground hover:text-primary transition-colors px-3 py-1 rounded-full"
           >
             AG
-          </a>
+          </Link>
 
           {/* Divider */}
           <div className="w-px h-4 bg-border mx-1" />
@@ -44,18 +54,18 @@ const Navbar = () => {
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href + item.label}
                 href={item.href}
                 className={cn(
                   "relative text-xs font-medium transition-colors duration-200 px-3 py-1.5 rounded-full",
-                  activeSection === item.id
+                  isItemActive(item)
                     ? "text-foreground bg-secondary/60"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
                 )}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -106,19 +116,19 @@ const Navbar = () => {
             >
               <div className="p-2 flex flex-col gap-0.5">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.href + item.label}
                     href={item.href}
                     className={cn(
                       "text-sm px-3 py-2 rounded-xl transition-colors",
-                      activeSection === item.id
+                      isItemActive(item)
                         ? "text-foreground bg-secondary/60 font-medium"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
                     )}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </motion.div>

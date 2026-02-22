@@ -325,4 +325,17 @@
   .venture-row:hover {
     @apply bg-primary/[0.02];
   }
+
+  /* Blog prose wrapper */
+  .prose-blog {
+    @apply text-foreground/85 leading-relaxed;
+  }
+
+  .prose-blog > * + * {
+    margin-top: 1.25em;
+  }
+
+  .prose-blog pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
 }

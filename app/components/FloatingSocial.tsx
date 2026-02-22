@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/andresguerra", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/andresguerra", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/guerrita", label: "GitHub" },
+  { icon: Linkedin, href: "https://https://www.linkedin.com/in/andres-guerra-montoya/", label: "LinkedIn" },
   { icon: Mail, href: "mailto:andresguerra0625@gmail.com", label: "Email" },
 ];
 

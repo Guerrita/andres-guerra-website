@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { MapPin, Briefcase, Zap, CheckCircle2 } from "lucide-react";
 import { useI18n } from "@/app/lib/i18n-context";
 
@@ -14,9 +15,43 @@ const cardVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
+function AnimatedCounter({
+  value,
+  suffix,
+  inView,
+}: {
+  value: number;
+  suffix: string;
+  inView: boolean;
+}) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1800;
+    const step = Math.ceil(duration / value);
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start >= value) clearInterval(timer);
+    }, step);
+    return () => clearInterval(timer);
+  }, [inView, value]);
+
+  return (
+    <span className="tabular-nums">
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
 const BentoSection = () => {
   const { t } = useI18n();
   const experiences = t.experience.entries;
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
 
   return (
     <section id="bento" className="section-container">
@@ -118,17 +153,33 @@ const BentoSection = () => {
           </div>
         </motion.div>
 
-        {/* Projects count */}
-        <motion.div variants={cardVariants} className="bento-card p-6 group">
-          <p className="text-4xl font-heading font-bold gradient-text mb-2">
-            {t.projects.entries.length}+
-          </p>
-          <p className="text-sm text-muted-foreground">Projects shipped</p>
-          <div className="mt-4 pt-4 border-t border-border/60">
-            <p className="text-xs font-code text-muted-foreground">
-              2+ years of professional experience
-            </p>
-          </div>
+        {/* Animated stats row — spans full width */}
+        <motion.div
+          ref={statsRef}
+          variants={cardVariants}
+          className="col-span-1 md:col-span-2 lg:col-span-3 grid grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          {t.stats.items.map((item, index) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="bento-card p-5 text-center group"
+            >
+              <p className="text-3xl md:text-4xl font-heading font-bold gradient-text mb-1">
+                <AnimatedCounter
+                  value={item.value}
+                  suffix={item.suffix}
+                  inView={statsInView}
+                />
+              </p>
+              <p className="text-xs text-muted-foreground font-medium">
+                {item.label}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
       </motion.div>
     </section>

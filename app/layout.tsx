@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import ParticleBackground from "./components/ParticleBackground";
+import Providers from "./components/Providers";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -53,9 +54,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <ParticleBackground />
-          <div style={{ position: "relative", zIndex: 1 }}>
-            {children}
-          </div>
+          <Providers>
+            <div style={{ position: "relative", zIndex: 1 }}>
+              {children}
+            </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

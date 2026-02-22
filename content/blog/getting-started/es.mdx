@@ -1,0 +1,63 @@
+---
+title: "Bienvenido a mi Blog"
+description: "Mi primer post sobre desarrollo backend, arquitectura serverless y las tecnologias que uso dia a dia."
+date: "2026-02-21"
+category: "General"
+tags: ["Backend", "AWS", "Serverless", "Blog"]
+published: true
+---
+
+## Hola Mundo
+
+Bienvenido a mi blog. Este es un espacio donde voy a compartir mis experiencias, aprendizajes y reflexiones sobre desarrollo backend, arquitectura cloud y tecnologia en general.
+
+## Sobre que voy a escribir
+
+Mi trabajo diario gira alrededor de **Python**, **AWS** y arquitecturas **serverless**. Estos son algunos de los temas que planeo cubrir:
+
+### Backend y APIs
+
+- Patrones de diseno para APIs RESTful
+- Optimizacion de rendimiento en Lambda
+- Mejores practicas con DynamoDB y ArangoDB
+
+### Arquitectura Cloud
+
+- Diseno de sistemas serverless escalables
+- Step Functions para orquestacion de workflows
+- Monitoreo y observabilidad con Coralogix
+
+### Desarrollo Web
+
+- Next.js y React para frontends modernos
+- Integracion de servicios AWS con aplicaciones web
+- CI/CD con GitHub Actions
+
+## Codigo de ejemplo
+
+Aqui un ejemplo simple de una funcion Lambda en Python:
+
+```python
+import json
+
+def handler(event, context):
+    """Handler principal de la Lambda."""
+    body = json.loads(event.get("body", "{}"))
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({
+            "message": "Hola desde Lambda!",
+            "input": body
+        })
+    }
+```
+
+> La simplicidad es la maxima sofisticacion. — Leonardo da Vinci
+
+## Proximos pasos
+
+Estare publicando contenido regularmente. Si te interesa algun tema en particular, no dudes en contactarme.
+
+Gracias por leer!

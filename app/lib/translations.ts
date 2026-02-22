@@ -6,6 +6,7 @@ export interface Translations {
     experience: string;
     stack: string;
     projects: string;
+    blog: string;
     contact: string;
   };
   hero: {
@@ -38,11 +39,21 @@ export interface Translations {
     titleHighlight: string;
     subtitle: string;
     entries: {
+      id: string;
       title: string;
+      subtitle: string;
       description: string;
       highlights: string[];
       status: string;
+      category: string;
       tech: string[];
+      websiteUrl?: string;
+      image?: string;
+      features: {
+        icon: string;
+        title: string;
+        description: string;
+      }[];
     }[];
   };
   contact: {
@@ -64,6 +75,39 @@ export interface Translations {
     locationLabel: string;
     locationValue: string;
   };
+  stats: {
+    title: string;
+    titleHighlight: string;
+    items: {
+      value: number;
+      suffix: string;
+      label: string;
+    }[];
+  };
+  services: {
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    entries: {
+      title: string;
+      description: string;
+      highlights: string[];
+    }[];
+  };
+  blog: {
+    title: string;
+    titleHighlight: string;
+    subtitle: string;
+    searchPlaceholder: string;
+    allCategories: string;
+    minRead: string;
+    publishedOn: string;
+    backToBlog: string;
+    sharePost: string;
+    noPosts: string;
+    noResults: string;
+    tags: string;
+  };
   footer: {
     builtWith: string;
   };
@@ -76,6 +120,7 @@ export const translations: Record<Locale, Translations> = {
       experience: "Experiencia",
       stack: "Stack",
       projects: "Proyectos",
+      blog: "Blog",
       contact: "Contacto",
     },
     hero: {
@@ -164,79 +209,202 @@ export const translations: Record<Locale, Translations> = {
       title: "Proyectos",
       titleHighlight: "Destacados",
       subtitle:
-        "Una selección de proyectos que demuestran mi experiencia en desarrollo backend y serverless.",
+        "Una selección de proyectos web que he desarrollado, desde sitios corporativos hasta plataformas de monitoreo.",
       entries: [
         {
-          title: "Serverless Automation Platform",
+          id: "bexsoluciones",
+          title: "Bex Soluciones",
+          subtitle: "Plataforma de Logística Empresarial",
           description:
-            "Sistema de automatización empresarial con AWS serverless para gestión de workflows complejos.",
-          tech: ["Python", "AWS Lambda", "Step Functions", "DynamoDB", "ArangoDB"],
+            "Sitio web corporativo moderno para empresa de soluciones logísticas, con diseño responsive y arquitectura optimizada para SEO.",
+          category: "Next.js",
+          tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
           highlights: [
-            "Dynamic execution engine",
-            "Context management",
-            "Comprehensive error handling",
-          ],
-          status: "Production (Neostella)",
-        },
-        {
-          title: "Energy Monitoring Platform",
-          description:
-            "Plataforma full-stack para monitoreo de consumo energético en tiempo real.",
-          tech: ["React Native", "Python", "AWS Lambda", "DynamoDB"],
-          highlights: [
-            "Real-time data visualization",
-            "CI/CD automation",
-            "30% user engagement increase",
-          ],
-          status: "Production (Plusenergy)",
-        },
-        {
-          title: "E-commerce Platform",
-          description:
-            "Plataforma de e-commerce custom con integraciones de pago y gestión de inventario.",
-          tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "AWS"],
-          highlights: [
-            "Custom checkout flows",
-            "Admin dashboard",
-            "SEO optimization",
-          ],
-          status: "Proyecto Freelance",
-        },
-        {
-          title: "Spa Booking System",
-          description:
-            "Sistema de reservas con calendario interactivo y gestión de servicios.",
-          tech: ["Next.js", "Calendar API", "AWS Lambda", "DynamoDB"],
-          highlights: [
-            "Real-time availability",
-            "Automated notifications",
-            "Payment integration",
-          ],
-          status: "Proyecto Freelance",
-        },
-        {
-          title: "RESTful API Optimization",
-          description:
-            "APIs de alto rendimiento con AWS serverless y optimización de queries.",
-          tech: ["Python", "AWS Lambda", "API Gateway", "DynamoDB"],
-          highlights: [
-            "Sub-100ms response times",
-            "Efficient query patterns",
-            "Scalable architecture",
+            "Diseño responsive optimizado",
+            "SEO avanzado",
+            "Rendimiento superior",
           ],
           status: "Producción",
+          websiteUrl: "https://www.bexsoluciones.com/",
+          image: "/portfolio-long/bexsoluciones.png",
+          features: [
+            {
+              icon: "⚛️",
+              title: "Arquitectura React",
+              description: "Componentes reutilizables y estado optimizado para mejor rendimiento",
+            },
+            {
+              icon: "✏️",
+              title: "CMS Integrado",
+              description: "Sistema de gestión de contenido fácil de actualizar",
+            },
+            {
+              icon: "📱",
+              title: "Diseño Responsive",
+              description: "Experiencia perfecta en todos los dispositivos",
+            },
+            {
+              icon: "⚡",
+              title: "Optimización SEO",
+              description: "Mejores prácticas para posicionamiento en buscadores",
+            },
+          ],
         },
         {
-          title: "Business Analytics Dashboard",
+          id: "cjbservice",
+          title: "CJB Service",
+          subtitle: "Sitio Web de Servicios Profesionales",
           description:
-            "Dashboard de analytics con visualizaciones interactivas para métricas de negocio.",
-          tech: ["React", "D3.js", "Python", "AWS Lambda"],
+            "Plataforma web para empresa de servicios con WordPress, optimizada para conversiones y fácil gestión de contenido.",
+          category: "WordPress",
+          tech: ["WordPress", "PHP", "CSS3", "MySQL"],
           highlights: [
-            "Real-time charts",
-            "Data aggregation",
-            "Export capabilities",
+            "Gestión de contenido intuitiva",
+            "Optimización de conversiones",
+            "Diseño mobile-first",
           ],
           status: "Producción",
+          websiteUrl: "https://cjbservice.com/",
+          image: "/portfolio-long/cjbservice.png",
+          features: [
+            {
+              icon: "🏗️",
+              title: "WordPress Personalizado",
+              description: "Tema custom adaptado a las necesidades del negocio",
+            },
+            {
+              icon: "📈",
+              title: "SEO Optimizado",
+              description: "Configuración avanzada para mejor visibilidad online",
+            },
+            {
+              icon: "📱",
+              title: "Mobile First",
+              description: "Diseño priorizado para dispositivos móviles",
+            },
+            {
+              icon: "🎯",
+              title: "Conversión Optimizada",
+              description: "Llamadas a la acción estratégicamente ubicadas",
+            },
+          ],
+        },
+        {
+          id: "plusenergy",
+          title: "Plusenergy",
+          subtitle: "Plataforma de Monitoreo Energético",
+          description:
+            "Sitio web corporativo y plataforma de monitoreo para empresa del sector energético, con integración de apps móviles (disponibles en App Store y Google Play).",
+          category: "React",
+          tech: ["React", "Python", "AWS Lambda", "DynamoDB", "React Native"],
+          highlights: [
+            "Integración con apps móviles",
+            "Visualización de datos en tiempo real",
+            "Aumento del 30% en engagement",
+          ],
+          status: "Producción",
+          websiteUrl: "https://plusenergy.com.co/",
+          image: "/portfolio-long/plusenergy-co.png",
+          features: [
+            {
+              icon: "⚛️",
+              title: "React Moderno",
+              description: "Interfaz dinámica con hooks y context API",
+            },
+            {
+              icon: "🎨",
+              title: "UI/UX Profesional",
+              description: "Diseño intuitivo enfocado en la experiencia del usuario",
+            },
+            {
+              icon: "📱",
+              title: "Apps Móviles",
+              description: "Apps complementarias en iOS y Android (Plusenergy & Plusenergy Consumidores)",
+            },
+            {
+              icon: "⚡",
+              title: "Backend Serverless",
+              description: "AWS Lambda y DynamoDB para escalabilidad",
+            },
+          ],
+        },
+        {
+          id: "porterparts",
+          title: "Porter Parts",
+          subtitle: "E-commerce de Repuestos Automotrices",
+          description:
+            "Tienda online completa para venta de repuestos automotrices, con catálogo extenso, carrito de compras y gestión de inventario.",
+          category: "Next.js",
+          tech: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+          highlights: [
+            "Catálogo de productos robusto",
+            "Integración de pagos segura",
+            "Panel de administración",
+          ],
+          status: "Producción",
+          websiteUrl: "https://www.porterparts.com/",
+          image: "/portfolio-long/porterparts.png",
+          features: [
+            {
+              icon: "☁️",
+              title: "E-commerce Escalable",
+              description: "Arquitectura preparada para alto volumen de transacciones",
+            },
+            {
+              icon: "🛒",
+              title: "Carrito Avanzado",
+              description: "Sistema de compras intuitivo con gestión de inventario",
+            },
+            {
+              icon: "📱",
+              title: "Experiencia Mobile",
+              description: "Compras optimizadas desde cualquier dispositivo",
+            },
+            {
+              icon: "🔒",
+              title: "Pagos Seguros",
+              description: "Integración con Stripe para transacciones protegidas",
+            },
+          ],
+        },
+        {
+          id: "templeofgroom",
+          title: "Temple of Groom Barbershop",
+          subtitle: "Sitio Web de Barbería Premium",
+          description:
+            "Sitio web elegante para barbería de alto nivel, con sistema de reservas integrado y galería de servicios.",
+          category: "WordPress",
+          tech: ["WordPress", "PHP", "CSS3", "JavaScript"],
+          highlights: [
+            "Diseño elegante y moderno",
+            "Sistema de reservas online",
+            "Galería de servicios",
+          ],
+          status: "Producción",
+          websiteUrl: "https://www.templeofgroombarbershop.com/",
+          image: "/portfolio-long/templeofgroombarbershop.png",
+          features: [
+            {
+              icon: "💈",
+              title: "Diseño Único",
+              description: "Identidad visual que refleja la marca premium",
+            },
+            {
+              icon: "📅",
+              title: "Reservas Online",
+              description: "Sistema integrado de agendamiento de citas",
+            },
+            {
+              icon: "📱",
+              title: "Mobile Optimizado",
+              description: "Navegación fluida en smartphones",
+            },
+            {
+              icon: "🎨",
+              title: "Galería Visual",
+              description: "Showcase de servicios y trabajos realizados",
+            },
+          ],
         },
       ],
     },
@@ -259,6 +427,63 @@ export const translations: Record<Locale, Translations> = {
       locationLabel: "Ubicación",
       locationValue: "Medellín, Colombia",
     },
+    stats: {
+      title: "Impacto en",
+      titleHighlight: "Números",
+      items: [
+        { value: 4, suffix: "+", label: "Años de experiencia" },
+        { value: 5, suffix: "+", label: "Proyectos en producción" },
+        { value: 3, suffix: "", label: "Empresas" },
+        { value: 40, suffix: "%", label: "Reducción en deploy time" },
+      ],
+    },
+    services: {
+      title: "Lo que",
+      titleHighlight: "Hago",
+      subtitle:
+        "Servicios especializados en desarrollo backend y arquitectura cloud para llevar tu producto al siguiente nivel.",
+      entries: [
+        {
+          title: "Arquitectura Serverless",
+          description:
+            "Diseño e implementación de sistemas serverless escalables con AWS Lambda, Step Functions y API Gateway.",
+          highlights: ["AWS Lambda", "Step Functions", "Alta disponibilidad"],
+        },
+        {
+          title: "Desarrollo de APIs",
+          description:
+            "APIs RESTful de alto rendimiento, diseñadas para escalar y con documentación clara.",
+          highlights: ["RESTful", "Python", "Node.js"],
+        },
+        {
+          title: "Infraestructura Cloud",
+          description:
+            "Configuración y gestión de servicios AWS: bases de datos, colas, almacenamiento y monitoreo.",
+          highlights: ["DynamoDB", "SQS", "S3"],
+        },
+        {
+          title: "Automatización de Procesos",
+          description:
+            "Flujos de trabajo automatizados que eliminan tareas manuales y reducen errores operativos.",
+          highlights: ["CI/CD", "GitHub Actions", "Workflows"],
+        },
+      ],
+    },
+    blog: {
+      title: "Mi",
+      titleHighlight: "Blog",
+      subtitle:
+        "Reflexiones y aprendizajes sobre desarrollo backend, arquitectura cloud y tecnologia.",
+      searchPlaceholder: "Buscar articulos...",
+      allCategories: "Todas",
+      minRead: "min de lectura",
+      publishedOn: "Publicado el",
+      backToBlog: "Volver al Blog",
+      sharePost: "Compartir",
+      noPosts: "No hay articulos publicados aun.",
+      noResults: "No se encontraron articulos con esos criterios.",
+      tags: "Etiquetas",
+    },
     footer: {
       builtWith: "Built with Next.js, Tailwind CSS & Framer Motion.",
     },
@@ -269,6 +494,7 @@ export const translations: Record<Locale, Translations> = {
       experience: "Experience",
       stack: "Stack",
       projects: "Projects",
+      blog: "Blog",
       contact: "Contact",
     },
     hero: {
@@ -356,79 +582,202 @@ export const translations: Record<Locale, Translations> = {
       title: "Featured",
       titleHighlight: "Projects",
       subtitle:
-        "A selection of projects showcasing my experience in backend and serverless development.",
+        "A selection of web projects I've developed, from corporate websites to monitoring platforms.",
       entries: [
         {
-          title: "Serverless Automation Platform",
+          id: "bexsoluciones",
+          title: "Bex Soluciones",
+          subtitle: "Enterprise Logistics Platform",
           description:
-            "Enterprise automation system with AWS serverless for complex workflow management.",
-          tech: ["Python", "AWS Lambda", "Step Functions", "DynamoDB", "ArangoDB"],
+            "Modern corporate website for logistics solutions company, with responsive design and SEO-optimized architecture.",
+          category: "Next.js",
+          tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
           highlights: [
-            "Dynamic execution engine",
-            "Context management",
-            "Comprehensive error handling",
+            "Optimized responsive design",
+            "Advanced SEO",
+            "Superior performance",
           ],
-          status: "Production (Neostella)",
+          status: "Production",
+          websiteUrl: "https://www.bexsoluciones.com/",
+          image: "/portfolio-long/bexsoluciones.png",
+          features: [
+            {
+              icon: "⚛️",
+              title: "React Architecture",
+              description: "Reusable components and optimized state for better performance",
+            },
+            {
+              icon: "✏️",
+              title: "Integrated CMS",
+              description: "Easy-to-update content management system",
+            },
+            {
+              icon: "📱",
+              title: "Responsive Design",
+              description: "Perfect experience across all devices",
+            },
+            {
+              icon: "⚡",
+              title: "SEO Optimization",
+              description: "Best practices for search engine ranking",
+            },
+          ],
         },
         {
-          title: "Energy Monitoring Platform",
+          id: "cjbservice",
+          title: "CJB Service",
+          subtitle: "Professional Services Website",
           description:
-            "Full-stack platform for real-time energy consumption monitoring.",
-          tech: ["React Native", "Python", "AWS Lambda", "DynamoDB"],
+            "Web platform for service company with WordPress, optimized for conversions and easy content management.",
+          category: "WordPress",
+          tech: ["WordPress", "PHP", "CSS3", "MySQL"],
           highlights: [
+            "Intuitive content management",
+            "Conversion optimization",
+            "Mobile-first design",
+          ],
+          status: "Production",
+          websiteUrl: "https://cjbservice.com/",
+          image: "/portfolio-long/cjbservice.png",
+          features: [
+            {
+              icon: "🏗️",
+              title: "Custom WordPress",
+              description: "Custom theme adapted to business needs",
+            },
+            {
+              icon: "📈",
+              title: "SEO Optimized",
+              description: "Advanced configuration for better online visibility",
+            },
+            {
+              icon: "📱",
+              title: "Mobile First",
+              description: "Design prioritized for mobile devices",
+            },
+            {
+              icon: "🎯",
+              title: "Conversion Optimized",
+              description: "Strategically placed calls to action",
+            },
+          ],
+        },
+        {
+          id: "plusenergy",
+          title: "Plusenergy",
+          subtitle: "Energy Monitoring Platform",
+          description:
+            "Corporate website and monitoring platform for energy sector company, with mobile app integration (available on App Store and Google Play).",
+          category: "React",
+          tech: ["React", "Python", "AWS Lambda", "DynamoDB", "React Native"],
+          highlights: [
+            "Mobile app integration",
             "Real-time data visualization",
-            "CI/CD automation",
-            "30% user engagement increase",
-          ],
-          status: "Production (Plusenergy)",
-        },
-        {
-          title: "E-commerce Platform",
-          description:
-            "Custom e-commerce platform with payment integrations and inventory management.",
-          tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "AWS"],
-          highlights: [
-            "Custom checkout flows",
-            "Admin dashboard",
-            "SEO optimization",
-          ],
-          status: "Freelance Project",
-        },
-        {
-          title: "Spa Booking System",
-          description:
-            "Booking system with interactive calendar and service management.",
-          tech: ["Next.js", "Calendar API", "AWS Lambda", "DynamoDB"],
-          highlights: [
-            "Real-time availability",
-            "Automated notifications",
-            "Payment integration",
-          ],
-          status: "Freelance Project",
-        },
-        {
-          title: "RESTful API Optimization",
-          description:
-            "High-performance APIs with AWS serverless and query optimization.",
-          tech: ["Python", "AWS Lambda", "API Gateway", "DynamoDB"],
-          highlights: [
-            "Sub-100ms response times",
-            "Efficient query patterns",
-            "Scalable architecture",
+            "30% engagement increase",
           ],
           status: "Production",
+          websiteUrl: "https://plusenergy.com.co/",
+          image: "/portfolio-long/plusenergy-co.png",
+          features: [
+            {
+              icon: "⚛️",
+              title: "Modern React",
+              description: "Dynamic interface with hooks and context API",
+            },
+            {
+              icon: "🎨",
+              title: "Professional UI/UX",
+              description: "Intuitive design focused on user experience",
+            },
+            {
+              icon: "📱",
+              title: "Mobile Apps",
+              description: "Complementary apps on iOS and Android (Plusenergy & Plusenergy Consumidores)",
+            },
+            {
+              icon: "⚡",
+              title: "Serverless Backend",
+              description: "AWS Lambda and DynamoDB for scalability",
+            },
+          ],
         },
         {
-          title: "Business Analytics Dashboard",
+          id: "porterparts",
+          title: "Porter Parts",
+          subtitle: "Automotive Parts E-commerce",
           description:
-            "Analytics dashboard with interactive visualizations for business metrics.",
-          tech: ["React", "D3.js", "Python", "AWS Lambda"],
+            "Complete online store for automotive parts sales, with extensive catalog, shopping cart, and inventory management.",
+          category: "Next.js",
+          tech: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
           highlights: [
-            "Real-time charts",
-            "Data aggregation",
-            "Export capabilities",
+            "Robust product catalog",
+            "Secure payment integration",
+            "Admin panel",
           ],
           status: "Production",
+          websiteUrl: "https://www.porterparts.com/",
+          image: "/portfolio-long/porterparts.png",
+          features: [
+            {
+              icon: "☁️",
+              title: "Scalable E-commerce",
+              description: "Architecture ready for high transaction volume",
+            },
+            {
+              icon: "🛒",
+              title: "Advanced Cart",
+              description: "Intuitive shopping system with inventory management",
+            },
+            {
+              icon: "📱",
+              title: "Mobile Experience",
+              description: "Optimized shopping from any device",
+            },
+            {
+              icon: "🔒",
+              title: "Secure Payments",
+              description: "Stripe integration for protected transactions",
+            },
+          ],
+        },
+        {
+          id: "templeofgroom",
+          title: "Temple of Groom Barbershop",
+          subtitle: "Premium Barbershop Website",
+          description:
+            "Elegant website for high-end barbershop, with integrated booking system and service gallery.",
+          category: "WordPress",
+          tech: ["WordPress", "PHP", "CSS3", "JavaScript"],
+          highlights: [
+            "Elegant and modern design",
+            "Online booking system",
+            "Service gallery",
+          ],
+          status: "Production",
+          websiteUrl: "https://www.templeofgroombarbershop.com/",
+          image: "/portfolio-long/templeofgroombarbershop.png",
+          features: [
+            {
+              icon: "💈",
+              title: "Unique Design",
+              description: "Visual identity reflecting the premium brand",
+            },
+            {
+              icon: "📅",
+              title: "Online Booking",
+              description: "Integrated appointment scheduling system",
+            },
+            {
+              icon: "📱",
+              title: "Mobile Optimized",
+              description: "Smooth navigation on smartphones",
+            },
+            {
+              icon: "🎨",
+              title: "Visual Gallery",
+              description: "Showcase of services and completed work",
+            },
+          ],
         },
       ],
     },
@@ -450,6 +799,63 @@ export const translations: Record<Locale, Translations> = {
       errorEmail: "Please enter a valid email address.",
       locationLabel: "Location",
       locationValue: "Medellín, Colombia",
+    },
+    stats: {
+      title: "Impact in",
+      titleHighlight: "Numbers",
+      items: [
+        { value: 4, suffix: "+", label: "Years of experience" },
+        { value: 5, suffix: "+", label: "Projects in production" },
+        { value: 3, suffix: "", label: "Companies" },
+        { value: 40, suffix: "%", label: "Deploy time reduction" },
+      ],
+    },
+    services: {
+      title: "What I",
+      titleHighlight: "Do",
+      subtitle:
+        "Specialized services in backend development and cloud architecture to take your product to the next level.",
+      entries: [
+        {
+          title: "Serverless Architecture",
+          description:
+            "Design and implementation of scalable serverless systems with AWS Lambda, Step Functions, and API Gateway.",
+          highlights: ["AWS Lambda", "Step Functions", "High availability"],
+        },
+        {
+          title: "API Development",
+          description:
+            "High-performance RESTful APIs, designed to scale with clear documentation.",
+          highlights: ["RESTful", "Python", "Node.js"],
+        },
+        {
+          title: "Cloud Infrastructure",
+          description:
+            "Setup and management of AWS services: databases, queues, storage, and monitoring.",
+          highlights: ["DynamoDB", "SQS", "S3"],
+        },
+        {
+          title: "Process Automation",
+          description:
+            "Automated workflows that eliminate manual tasks and reduce operational errors.",
+          highlights: ["CI/CD", "GitHub Actions", "Workflows"],
+        },
+      ],
+    },
+    blog: {
+      title: "My",
+      titleHighlight: "Blog",
+      subtitle:
+        "Thoughts and learnings about backend development, cloud architecture and technology.",
+      searchPlaceholder: "Search articles...",
+      allCategories: "All",
+      minRead: "min read",
+      publishedOn: "Published on",
+      backToBlog: "Back to Blog",
+      sharePost: "Share",
+      noPosts: "No articles published yet.",
+      noResults: "No articles found matching your criteria.",
+      tags: "Tags",
     },
     footer: {
       builtWith: "Built with Next.js, Tailwind CSS & Framer Motion.",

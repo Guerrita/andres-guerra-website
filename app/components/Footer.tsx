@@ -1,11 +1,12 @@
 "use client";
 
 import { Github, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
 import { useI18n } from "@/app/lib/i18n-context";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/andresguerra", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/andresguerra", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/guerrita", label: "GitHub" },
+  { icon: Linkedin, href: "https://https://www.linkedin.com/in/andres-guerra-montoya/", label: "LinkedIn" },
   { icon: Mail, href: "mailto:andresguerra0625@gmail.com", label: "Email" },
 ];
 
@@ -13,11 +14,12 @@ const Footer = () => {
   const { t } = useI18n();
 
   const navLinks = [
-    { label: t.nav.home, href: "#inicio" },
-    { label: t.nav.experience, href: "#experiencia" },
-    { label: t.nav.stack, href: "#stack" },
-    { label: t.nav.projects, href: "#proyectos" },
-    { label: t.nav.contact, href: "#contacto" },
+    { label: t.nav.home, href: "/#inicio" },
+    { label: t.nav.experience, href: "/#experiencia" },
+    { label: t.nav.stack, href: "/#stack" },
+    { label: t.nav.projects, href: "/#proyectos" },
+    { label: t.nav.blog, href: "/blog" },
+    { label: t.nav.contact, href: "/#contacto" },
   ];
 
   return (
@@ -26,13 +28,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-wrap items-center justify-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
